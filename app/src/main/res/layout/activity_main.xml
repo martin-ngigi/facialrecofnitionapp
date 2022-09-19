@@ -12,6 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:id="@+id/camera_btn"
-        android:text="Object"/>
+        android:text="Real-Time Face Recognition"
+        android:textAllCaps="false"
+        />
+
 
 </LinearLayout>
