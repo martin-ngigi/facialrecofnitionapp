@@ -11,6 +11,7 @@ import org.opencv.android.Utils;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfRect;
+import org.opencv.core.Point;
 import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
@@ -166,6 +167,17 @@ public class Face_Recognition {
             interpreter.run(byteBuffer, face_value);
             //ig=f you want to see face_value
             Log.d("Face_Recognition", "Face_Recognition Output: "+ Array.get(Array.get(face_value, 0), 0));
+            
+            //read face value
+            float read_face = (float) Array.get(Array.get(face_value, 0), 0);
+            //invoke method whose input is read_face and output is name
+            String face_name = getFaceName(read_face);
+            //put text on frame
+            //        //input/output            text
+            Imgproc.putText(mat_image, ""+face_name,
+                    new Point((int)faceArray[i].tl().x+10, (int)faceArray[i].tl().y+20),
+                    1, 1.5, new Scalar(255,255,255.150), 2);
+                    //sizw                  color ( R, G, B, Alpha)         thickness
         }
 
 
@@ -173,6 +185,104 @@ public class Face_Recognition {
         Core.flip(mat_image.t(), mat_image, 0);
 
         return mat_image;
+    }
+
+    private String getFaceName(float read_face) {
+        String val = "";
+        if (read_face >=0 & read_face<0.5){
+            val ="Courtney Cox";
+        }
+        else if (read_face >=0.5 & read_face<1.5){
+            val ="Anord Schwarzeneggar";
+        }
+        else if (read_face >=1.5 & read_face<2.5){
+            val ="Bhuvan Bam";
+        }
+        else if (read_face >=2.5 & read_face<3.5){
+            val ="Hardik Pandya";
+        }
+        else if (read_face >=3.5 & read_face<4.5){
+            val ="David Schwimmer";
+        }
+        else if (read_face >=4.5 & read_face<5.5){
+            val ="Matt LeBlanc";
+        }
+        else if (read_face >=5.5 & read_face<6.5){
+            val ="Simon Helberg";
+        }
+        else if (read_face >=6.5 & read_face<7.5){
+            val ="Scarlett Johnson";
+        }
+        else if (read_face >=7.5 & read_face<8.5){
+            val ="Pankaj Tripathi";
+        }
+        else if (read_face >=8.5 & read_face<9.5){
+            val ="Mathew Perry";
+        }
+        else if (read_face >=9.5 & read_face<10.5){
+            val ="Sylvester Stallone";
+        }
+        else if (read_face >=10.5 & read_face<11.5){
+            val ="Messi";
+        }
+        else if (read_face >=11.5 & read_face<12.5){
+            val ="Jim Parsons";
+        }
+        else if (read_face >=12.5 & read_face<13.5){
+            val ="Not in Dataset";
+        }
+        else if (read_face >=13.5 & read_face<14.5){
+            val ="Lisa Kudrow";
+        }
+        else if (read_face >=14.5 & read_face<15.5){
+            val ="Mohamed Ali";
+        }
+        else if (read_face >=15.5 & read_face<16.5){
+            val ="Brad Pit";
+        }
+        else if (read_face >=16.5 & read_face<17.5){
+            val ="Ronaldo";
+        }
+        else if (read_face >=17.5 & read_face<18.5){
+            val ="Virat Kohli";
+        }
+        else if (read_face >=18.5 & read_face<19.5){
+            val ="Angelina Jolie";
+        }
+        else if (read_face >=19.5 & read_face<20.5){
+            val ="KunalNayya";
+        }
+        else if (read_face >=20.5 & read_face<21.5){
+            val ="Monaje Bajpayee";
+        }
+        else if (read_face >=21.5 & read_face<22.5){
+            val ="Sachin Tundulka";
+        }
+        else if (read_face >=22.5 & read_face<23.5){
+            val ="Jennifer Aniston";
+        }
+        else if (read_face >=23.5 & read_face<24.5){
+            val ="Dhoni";
+        }
+        else if (read_face >=24.5 & read_face<25.5){
+            val ="Pewdiepie";
+        }
+        else if (read_face >=25.5 & read_face<26.5){
+            val ="Aishwarya Rai";
+        }
+        else if (read_face >=26.5 & read_face<27.5){
+            val ="Johnny Galeck";
+        }
+        else if (read_face >=27.5 & read_face<28.5){
+            val ="Rohit Sharma";
+        }
+        else if (read_face >=28.5 & read_face<29.5){
+            val ="Suresh Raina";
+        }
+
+
+        return val;
+
     }
 
     private ByteBuffer convertBitmapToByteBuffer(Bitmap scaledBitmap) {

@@ -81,8 +81,8 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
         try {
             face_recognition = new Face_Recognition(getAssets(),
                     CameraActivity.this,
-                    //"Efficient_Model.tflite",
-                    "my_model.tflite",
+                    "model_best_eff.tflite",
+                    //"my_model.tflite",
                     inputSize);
         }
         catch (IOException e){
